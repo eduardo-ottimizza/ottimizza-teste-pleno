@@ -1,5 +1,7 @@
 package ottimizza_eduardo_testepleno.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import ottimizza_eduardo_testepleno.models.Task;
 
 import java.time.Instant;
@@ -10,9 +12,12 @@ import java.util.UUID;
 public class TaskDTO {
 
     private UUID id;
+
+    @NotBlank(message = "O campo 'name' é obrigatório")
     private String name;
+
+    @NotNull(message = "O campo 'position' é obrigatório")
     private Integer position;
-    private Instant createdAt;
     private OffsetDateTime dueData;
     private Boolean completed = false;
     private List<String> tags;
@@ -20,11 +25,10 @@ public class TaskDTO {
     public TaskDTO() {
     }
 
-    public TaskDTO(UUID id, String name, Integer position, Instant createdAt, OffsetDateTime dueData, Boolean completed, List<String> tags) {
+    public TaskDTO(UUID id, String name, Integer position, OffsetDateTime dueData, Boolean completed, List<String> tags) {
         this.id = id;
         this.name = name;
         this.position = position;
-        this.createdAt = createdAt;
         this.dueData = dueData;
         this.completed = completed;
         this.tags = tags;
@@ -34,7 +38,6 @@ public class TaskDTO {
         this.id = task.getId();
         this.name = task.getName();
         this.position = task.getPosition();
-        this.createdAt = task.getCreatedAt();
         this.dueData = task.getDueData();
         this.completed = task.getCompleted();
         this.tags = task.getTags();
@@ -56,13 +59,6 @@ public class TaskDTO {
     }
     public void setPosition(Integer position) {
         this.position = position;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
     }
 
     public OffsetDateTime getDueData() {

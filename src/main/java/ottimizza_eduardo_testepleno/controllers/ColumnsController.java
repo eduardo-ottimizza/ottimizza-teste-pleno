@@ -1,5 +1,6 @@
 package ottimizza_eduardo_testepleno.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +25,7 @@ public class ColumnsController {
     }
 
     @PostMapping
-    public ResponseEntity<ColumnsResponse> save(@RequestBody ColumnsDTO columnsDTO) {
+    public ResponseEntity<ColumnsResponse> save(@RequestBody @Valid ColumnsDTO columnsDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(columnsService.save(columnsDTO));
 
     }
@@ -37,7 +38,7 @@ public class ColumnsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ColumnsResponse> update(@RequestBody ColumnsDTO columnsDTO, @PathVariable UUID id) {
+    public ResponseEntity<ColumnsResponse> update(@RequestBody @Valid ColumnsDTO columnsDTO, @PathVariable UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(columnsService.update(id, columnsDTO));
     }
 
