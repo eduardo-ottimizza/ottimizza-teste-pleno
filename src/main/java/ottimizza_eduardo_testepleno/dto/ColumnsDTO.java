@@ -17,6 +17,7 @@ public class ColumnsDTO {
     @NotNull(message = "O campo 'position' é obrigatório")
     private Integer position;
 
+    @NotNull(message = "O campo 'board_id' é obrigatório")
     @JsonProperty("board_id")
     private UUID boardId;
 

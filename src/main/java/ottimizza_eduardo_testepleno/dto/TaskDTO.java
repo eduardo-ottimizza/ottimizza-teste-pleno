@@ -25,8 +25,11 @@ public class TaskDTO {
     @Future(message = "A data deve ser futura")
     @NotNull(message = "O campo 'dueData' é obrigatório")
     private OffsetDateTime dueData;
+
     private Boolean completed = false;
     private List<String> tags;
+
+    @NotNull(message = "O campo 'column_id' é obrigatório")
     @JsonProperty("column_id")
     private UUID columnId;
 
