@@ -2,6 +2,7 @@ package ottimizza_eduardo_testepleno.models;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     private UUID id;
 
     @Column(nullable = false)

@@ -1,6 +1,7 @@
 package ottimizza_eduardo_testepleno.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
 import ottimizza_eduardo_testepleno.dto.BoardDTO;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.UUID;
 public class Board {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @UuidGenerator
     private UUID id;
 
     @Column(nullable = false)
