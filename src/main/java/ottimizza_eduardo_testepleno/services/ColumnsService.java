@@ -43,13 +43,13 @@ public class ColumnsService {
         return new ColumnsResponse(entity, new BoardDTO(board));
     }
 
-    public List<ColumnsResponse> findAll(Pageable pageable) {
+    public Page<ColumnsResponse> findAll(Pageable pageable) {
         Page<Columns> columns = columnsRepository.findAll(pageable);
 
         return columns.map(column -> {
             BoardDTO boardDTO = new BoardDTO(column.getBoard());
             return new ColumnsResponse(column, boardDTO);
-        }).getContent();
+        });
     }
 
     public ColumnsResponse update(UUID id, ColumnsDTO columnsDTO) {

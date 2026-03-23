@@ -11,7 +11,6 @@ import ottimizza_eduardo_testepleno.dto.ColumnsDTO;
 import ottimizza_eduardo_testepleno.dto.response.ColumnsResponse;
 import ottimizza_eduardo_testepleno.services.ColumnsService;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -31,7 +30,7 @@ public class ColumnsController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ColumnsResponse>> findAll(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<Page<ColumnsResponse>> findAll(@RequestParam(defaultValue = "0") int page,
                                                          @RequestParam(defaultValue = "5") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.status(HttpStatus.OK).body(columnsService.findAll(pageable));

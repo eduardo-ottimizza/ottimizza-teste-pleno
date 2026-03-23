@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TaskResponse>> findAll(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<Page<TaskResponse>> findAll(@RequestParam(defaultValue = "0") int page,
                                                       @RequestParam(defaultValue = "5") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.status(HttpStatus.OK).body(taskService.findAll(pageable));

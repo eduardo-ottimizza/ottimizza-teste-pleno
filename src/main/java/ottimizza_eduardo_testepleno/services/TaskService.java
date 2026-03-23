@@ -46,13 +46,13 @@ public class TaskService {
         return new TaskResponse(entity, new ColumnsResponse(columns));
     }
 
-    public List<TaskResponse> findAll(Pageable pageable) {
+    public Page<TaskResponse> findAll(Pageable pageable) {
         Page<Task> tasks = taskRepository.findAll(pageable);
 
         return tasks.map(task -> {
             ColumnsResponse columnsDTO = new ColumnsResponse(task.getColumn());
             return new TaskResponse(task, columnsDTO);
-        }).getContent();
+        });
     }
 
     public TaskResponse update(UUID id, TaskDTO taskDTO) {
