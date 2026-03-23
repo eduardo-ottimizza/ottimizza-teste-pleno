@@ -6,4 +6,6 @@ import ottimizza_eduardo_testepleno.models.Task;
 import java.util.UUID;
 
 public interface TaskRepository extends JpaRepository<Task, UUID> {
+
+    boolean existsByName(String name);
 }

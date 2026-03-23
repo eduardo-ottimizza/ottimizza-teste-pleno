@@ -1,54 +1,42 @@
-package ottimizza_eduardo_testepleno.dto;
+package ottimizza_eduardo_testepleno.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import ottimizza_eduardo_testepleno.models.Columns;
 import ottimizza_eduardo_testepleno.models.Task;
 
-import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public class TaskDTO {
+public class TaskResponse {
 
     private UUID id;
-
-    @NotBlank(message = "O campo 'name' é obrigatório")
     private String name;
-
-    @NotNull(message = "O campo 'position' é obrigatório")
     private Integer position;
-
-    @Future(message = "A data deve ser futura")
-    @NotNull(message = "O campo 'dueData' é obrigatório")
     private OffsetDateTime dueData;
-    private Boolean completed = false;
+    private Boolean completed;
     private List<String> tags;
-    @JsonProperty("column_id")
-    private UUID columnId;
+    private ColumnsResponse columns;
 
-    public TaskDTO() {
+    public TaskResponse() {
     }
 
-    public TaskDTO(UUID id, String name, Integer position, OffsetDateTime dueData, Boolean completed, List<String> tags) {
+    public TaskResponse(UUID id, String name, Integer position, OffsetDateTime dueData, Boolean completed, List<String> tags, ColumnsResponse columns) {
         this.id = id;
         this.name = name;
         this.position = position;
         this.dueData = dueData;
         this.completed = completed;
         this.tags = tags;
+        this.columns = columns;
     }
 
-    public TaskDTO(Task task) {
+    public TaskResponse(Task task, ColumnsResponse columns) {
         this.id = task.getId();
         this.name = task.getName();
         this.position = task.getPosition();
         this.dueData = task.getDueData();
         this.completed = task.getCompleted();
         this.tags = task.getTags();
+        this.columns = columns;
     }
 
     public UUID getId() {
@@ -90,7 +78,10 @@ public class TaskDTO {
         this.tags = tags;
     }
 
-    public UUID getColumnId() {
-        return columnId;
+    public ColumnsResponse getColumns() {
+        return columns;
+    }
+    public void setColumns(ColumnsResponse columns) {
+        this.columns = columns;
     }
 }

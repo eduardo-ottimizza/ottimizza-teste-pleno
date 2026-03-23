@@ -3,6 +3,7 @@ package ottimizza_eduardo_testepleno.models;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UuidGenerator;
+import ottimizza_eduardo_testepleno.dto.TaskDTO;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -52,6 +53,15 @@ public class Task {
         this.completed = completed;
         this.tags = tags;
         this.column = column;
+    }
+
+    public Task(TaskDTO taskDTO) {
+        this.id = taskDTO.getId();
+        this.name = taskDTO.getName();
+        this.position = taskDTO.getPosition();
+        this.dueData = taskDTO.getDueData();
+        this.completed = taskDTO.getCompleted();
+        this.tags = taskDTO.getTags();
     }
 
     public UUID getId() {

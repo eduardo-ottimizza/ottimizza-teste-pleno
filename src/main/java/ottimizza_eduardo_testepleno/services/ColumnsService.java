@@ -28,25 +28,25 @@ public class ColumnsService {
     }
 
     public ColumnsResponse save(ColumnsDTO columnsDTO) {
-        var alreadyRegistered = columnsRepository.existsByName(columnsDTO.getName());
-        if(alreadyRegistered) {
+        if(columnsRepository.existsByName(columnsDTO.getName())) {
             throw new AlreadyRegisteredException("Column already registered");
         }
 
         Columns entity = new Columns(columnsDTO);
-        Board board = boardRepository.findById(columnsDTO.getBoardId()).orElseThrow(() -> new NotFoundException("Board not found"));;
+        Board board = boardRepository.findById(columnsDTO.getBoardId()).orElseThrow(() ->
+                new NotFoundException("Board not found"));;
 
         entity.setBoard(board);
 
-        entity = columnsRepository.save(entity);
+        columnsRepository.save(entity);
 
         return new ColumnsResponse(entity, new BoardDTO(board));
     }
 
     public List<ColumnsResponse> findAll(Pageable pageable) {
-        Page<Columns> page = columnsRepository.findAll(pageable);
+        Page<Columns> columns = columnsRepository.findAll(pageable);
 
-        return page.map(column -> {
+        return columns.map(column -> {
             BoardDTO boardDTO = new BoardDTO(column.getBoard());
             return new ColumnsResponse(column, boardDTO);
         }).getContent();

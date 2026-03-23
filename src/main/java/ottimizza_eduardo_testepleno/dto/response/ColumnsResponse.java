@@ -29,6 +29,16 @@ public class ColumnsResponse {
         this.boards = boards;
     }
 
+    public ColumnsResponse(Columns entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.position = entity.getPosition();
+
+        if (entity.getBoard() != null) {
+            this.boards = new BoardDTO(entity.getBoard());
+        }
+    }
+
     public UUID getId() {
         return id;
     }
