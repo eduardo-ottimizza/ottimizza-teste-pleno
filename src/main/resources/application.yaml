@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ottimizza-eduardo-testepleno
+  datasource:
+    url: jdbc:postgresql://localhost:5432/teste-pleno-kanban
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+  spring:
+    mvc:
+      pathmatch:
+        matching-strategy: ant-path-matcher
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
