@@ -1,6 +1,7 @@
 package ottimizza_eduardo_testepleno.models;
 
 import jakarta.persistence.*;
+import ottimizza_eduardo_testepleno.dto.ColumnsDTO;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,6 +36,12 @@ public class Columns {
         this.position = position;
         this.board = board;
         this.tasks = tasks;
+    }
+
+    public Columns(ColumnsDTO columnsDTO) {
+        this.id = columnsDTO.getId();
+        this.name = columnsDTO.getName();
+        this.position = columnsDTO.getPosition();
     }
 
     public UUID getId() {

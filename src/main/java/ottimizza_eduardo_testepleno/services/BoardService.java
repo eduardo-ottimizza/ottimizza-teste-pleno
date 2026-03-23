@@ -21,7 +21,7 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public BoardDTO Save(BoardDTO boardDTO) {
+    public BoardDTO save(BoardDTO boardDTO) {
         var alreadyRegistered = boardRepository.existsByName(boardDTO.getName());
 
         if(alreadyRegistered) {

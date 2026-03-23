@@ -6,4 +6,7 @@ import ottimizza_eduardo_testepleno.models.Columns;
 import java.util.UUID;
 
 public interface ColumnsRepository extends JpaRepository<Columns, UUID> {
+
+    boolean existsByName(String name);
+
 }

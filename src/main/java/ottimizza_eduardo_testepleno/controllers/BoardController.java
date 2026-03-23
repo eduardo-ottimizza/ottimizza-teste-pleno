@@ -24,7 +24,7 @@ public class BoardController {
 
     @PostMapping
     public ResponseEntity<BoardDTO> save(@RequestBody @Valid BoardDTO boardDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(boardService.Save(boardDTO));
+        return ResponseEntity.status(HttpStatus.CREATED).body(boardService.save(boardDTO));
     }
 
     @GetMapping("/{id}")

@@ -1,31 +1,32 @@
-package ottimizza_eduardo_testepleno.dto;
+package ottimizza_eduardo_testepleno.dto.response;
 
+import ottimizza_eduardo_testepleno.dto.BoardDTO;
 import ottimizza_eduardo_testepleno.models.Columns;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public class ColumnsDTO {
+public class ColumnsResponse {
 
     private UUID id;
     private String name;
     private Integer position;
-    @JsonProperty("board_id")
-    private UUID boardId;
+    private BoardDTO boards;
 
-    public ColumnsDTO() {
+    public ColumnsResponse() {
     }
 
-    public ColumnsDTO(UUID id, String name, Integer position) {
+    public ColumnsResponse(UUID id, String name, Integer position, BoardDTO boards) {
         this.id = id;
         this.name = name;
         this.position = position;
+        this.boards = boards;
     }
 
-    public ColumnsDTO(Columns columns) {
+    public ColumnsResponse(Columns columns, BoardDTO boards) {
         this.id = columns.getId();
         this.name = columns.getName();
         this.position = columns.getPosition();
+        this.boards = boards;
     }
 
     public UUID getId() {
@@ -46,7 +47,10 @@ public class ColumnsDTO {
         this.position = position;
     }
 
-    public UUID getBoardId() {
-        return boardId;
+    public BoardDTO getBoards() {
+        return boards;
+    }
+    public void setBoards(BoardDTO boards) {
+        this.boards = boards;
     }
 }
