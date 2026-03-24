@@ -11,7 +11,6 @@ import ottimizza_eduardo_testepleno.dto.TaskDTO;
 import ottimizza_eduardo_testepleno.dto.response.TaskResponse;
 import ottimizza_eduardo_testepleno.services.TaskService;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
